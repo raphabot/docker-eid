@@ -1,0 +1,9 @@
+eid:
+  image: raphabot/eid
+  links:
+    - eidmysql:eid_mysql
+  ports:
+    - "8080:8080"
+
+eidmysql:
+  image: raphabot/eid-mysql

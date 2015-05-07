@@ -1,0 +1,14 @@
+eid:
+  build: eid/.
+  links:
+    - db:eid_mysql
+    - preparedb
+  ports:
+    - "8080:8080"
+
+db:
+  image: mysql
+
+dbprepare1:
+  image: mysql
+  command: sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "show databases; create database '$PCOLLECTA_DB'; create database '$EID2LDAP_DB'; show databases;"'
